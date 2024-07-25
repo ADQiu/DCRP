@@ -1,8 +1,10 @@
 #include"dcrp.hh"
-#include "gurobi_c++.hh"
-#include"cyclecoveringGRB.hh"
+#include "gurobi_c++.h"
+#include"cyclecovering_grb.hh"
 #include "string.h"
 
+using namespace std;
+using namespace dcrp;
 class DCRPGRB: public DCRPAbstract
 {
 public:
@@ -20,7 +22,6 @@ public:
 
 int main(int argc, char** argv)
 {
-    using namespace std;
     bool stat_flag=false;
 
     if(argc<3)
