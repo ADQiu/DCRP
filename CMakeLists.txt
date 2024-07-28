@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.18.0)
+cmake_minimum_required(VERSION 3.14.0)
 project(DetailedCableRouting VERSION 1.0.0)
 set(PROJECT_NAMESPACE dcrp)
 
