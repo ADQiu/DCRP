@@ -26,11 +26,15 @@ add_executable(DCRPVDLNS main_vdlns.cc)
 target_link_libraries(DCRPVDLNS DCRP)
 
 if(USE_GUROBI)
-    add_library(DCRPGRB_LIB STATIC cyclecovering_grb.hh cyclecovering_grb.cc)
+    add_library(DCRPGRB_LIB STATIC cyclecovering_grb.hh cyclecovering_grb.cc capacitated_tree_grb.hh capacitated_tree_grb.cc)
     target_link_libraries(DCRPGRB_LIB PUBLIC DCRP ${GUROBI_LIBRARIES})
     target_include_directories(DCRPGRB_LIB PUBLIC "${GUROBI_INCLUDE_DIR}")
 
     add_executable(DCRPGRB main_grb.cc)
     target_link_libraries(DCRPGRB DCRPGRB_LIB ${GUROBI_LIBRARIES})
     target_include_directories(DCRPGRB PUBLIC "${GUROBI_INCLUDE_DIR}")
+
+    add_executable(DCRPCAPTREE main_capacitated_tree.cc)
+    target_link_libraries(DCRPCAPTREE DCRPGRB_LIB ${GUROBI_LIBRARIES})
+    target_include_directories(DCRPCAPTREE PUBLIC "${GUROBI_INCLUDE_DIR}")
 endif(USE_GUROBI)
